@@ -82,6 +82,13 @@ header.top{position:relative;background:var(--rust);color:var(--cream);overflow:
 .btn{display:inline-block;padding:15px 28px;border:2px solid var(--cream);font:500 .78rem var(--s);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--cream)}
 .btn:hover{background:var(--gold);border-color:var(--gold);color:var(--green)}
 #miro{overflow:hidden;padding-bottom:110px}
+#research-poster{--bg:var(--gold);padding-bottom:110px}
+#research-poster a.shot{display:block;margin-top:28px}
+#research-poster img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:0 18px 40px rgba(30,74,60,.3)}
+#research-poster .btn{border-color:var(--green);color:var(--green)}
+#research-poster .btn:hover{background:var(--green);border-color:var(--green);color:var(--cream)}
+footer{position:relative}
+footer::before{content:"";position:absolute;left:0;right:0;top:-59px;height:60px;background:var(--green);-webkit-mask:var(--wave) bottom/100% 100% no-repeat;mask:var(--wave) bottom/100% 100% no-repeat}
 footer{background:var(--green);color:var(--cream)}
 footer .corners{background:var(--green)}
 
@@ -242,6 +249,15 @@ footer .corners{background:var(--green)}
     <div class="btns"><a class="btn" href="presentation.html">View the full presentation</a>
       <a class="btn" href="https://miro.com/app/board/uXjVGwrkvhQ=/?share_link_id=6981979690" target="_blank" rel="noopener">Open the Miro board</a>
     </div>
+  </div>
+</section>
+
+<section id="research-poster">
+  <div class="wrap">
+    <h2>Wellness poster</h2>
+    <p>The whole project on one page: context, our six-phase process, the gaps we found, how each stakeholder defines wellness differently, and the four design directions.</p>
+    <a class="shot" href="research-poster.html"><img src="images/research-poster.jpg" alt="Research poster for Wellness Tourism in India, with the context, six-phase process, gaps and patterns, a stakeholder misalignment map, five insights and four design directions" loading="lazy"></a>
+    <div class="btns"><a class="btn" href="research-poster.html">Open the full poster</a></div>
   </div>
 </section>
 </main>
