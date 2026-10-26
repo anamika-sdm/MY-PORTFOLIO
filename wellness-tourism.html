@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellness Tourism in India — Case study</title>
+<meta name="description" content="A design research project on why wellness tourism in India struggles at discovery and decision-making, and four design directions to fix it.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Grotesk:wght@500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--rust:#a34a0a;--green:#1e4a3c;--gold:#d9a23f;--cream:#f4eadf;--terra:#b9581f;--d:'Fraunces',Georgia,serif;--s:'Space Grotesk',system-ui,sans-serif;--b:'DM Sans',system-ui,sans-serif;
+--wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V32C180 0 360 6 560 28S960 56 1200 14V60z'/%3E%3C/svg%3E")}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--green);font:18px/1.65 var(--b)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+h1,h2,h3{font-family:var(--d);font-weight:700;line-height:1.1;margin:0}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:1rem;letter-spacing:-.01em}
+h3{font-size:1.3rem;margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:62ch}
+section{position:relative;padding:96px 0 72px;background:var(--bg,var(--cream));color:var(--fg,var(--green))}
+section::before{content:"";position:absolute;left:0;right:0;top:-59px;height:60px;background:var(--bg,var(--cream));-webkit-mask:var(--wave) bottom/100% 100% no-repeat;mask:var(--wave) bottom/100% 100% no-repeat}
+#process,#poster{--bg:var(--gold)}
+#research,#miro{--bg:var(--green);--fg:var(--cream)}
+#insights{--bg:var(--rust);--fg:var(--cream)}
+
+.corners{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:24px max(24px,calc(50% - 476px));font:500 .72rem/1.35 var(--s);letter-spacing:.22em;text-transform:uppercase;background:var(--rust);color:var(--cream)}
+.corners .c{text-align:center}.corners .r{text-align:right}
+.corners a{text-decoration:none}.corners a:hover{text-decoration:underline}
+header.top{position:relative;background:var(--rust);color:var(--cream);overflow:hidden}
+.hero{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:64px 24px 200px}
+.hero h1{font-size:clamp(2.8rem,9vw,6.2rem);max-width:11ch;letter-spacing:-.02em}
+.hero p{margin-top:26px;font-size:1.15rem;max-width:36ch}
+.sun{position:absolute;z-index:1;right:9%;top:50px;width:clamp(150px,26vw,290px);aspect-ratio:1;border-radius:50%;background:var(--gold)}
+.hills{position:absolute;left:0;bottom:-1px;width:100%;height:150px;z-index:1}
+.cactus{position:absolute;z-index:1;left:min(6%,60px);bottom:96px;width:56px;height:130px;color:var(--green)}
+.moon{position:absolute;right:8%;top:44px;width:110px;height:110px;border-radius:50%;box-shadow:inset -30px -8px 0 0 var(--gold)}
+.birds{position:absolute;width:44px;height:18px;color:var(--gold)}
+
+.quote{font:700 clamp(1.7rem,4.2vw,2.8rem)/1.2 var(--d);max-width:22ch}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:36px}
+.stats strong{font:700 clamp(2.6rem,6vw,3.8rem)/1 var(--d);color:var(--rust);display:block;margin-bottom:8px}
+
+.strip{height:90px;margin-bottom:60px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='90'%3E%3Cpath d='M10 90V50a50 50 0 0 1 100 0V90z' fill='%23b9581f'/%3E%3Cpath d='M32 90V54a28 28 0 0 1 56 0V90z' fill='%23f4eadf'/%3E%3C/svg%3E") repeat-x center bottom}
+.strip.b{display:none}
+
+.phases{list-style:none;margin:28px 0 0;padding:0}
+.phases li{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:20px 0;border-top:1px solid rgba(30,74,60,.45)}
+.phases .n{width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--gold);display:grid;place-items:center;font:700 1.1rem var(--d)}
+.phases p{margin:0}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:28px}
+.tile{padding:84px 26px 34px;border-radius:130px 130px 16px 16px;min-height:300px}
+.tile .big{font:700 3.2rem/1 var(--d);display:block;margin-bottom:12px}
+.tile p{margin:0;font-size:1rem}
+.tile ul{margin:0;padding-left:1.1rem;font-size:1rem;line-height:1.75}
+.tiles .tile:nth-child(1){background:var(--terra);color:var(--cream)}
+.tiles .tile:nth-child(2){background:var(--gold);color:var(--green)}
+.tiles .tile:nth-child(3){background:var(--cream);color:var(--green)}
+.tiles .tile:nth-child(4){background:var(--rust);color:var(--cream)}
+#directions .tile:nth-child(1){background:var(--green);color:var(--cream)}
+#directions .tile:nth-child(3){background:var(--gold);color:var(--green)}
+
+.gaps{margin-top:24px}
+.gap{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:14px 0;border-top:1px solid rgba(30,74,60,.45);align-items:baseline}
+.gap b{font:500 .78rem var(--s);letter-spacing:.2em;text-transform:uppercase}
+.bars{margin-top:32px;display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:1fr 58px;gap:12px;align-items:center}
+.bar div{position:relative;padding:9px 16px;border-radius:99px;overflow:hidden;isolation:isolate;background:rgba(217,162,63,.22)}
+.bar div::before{content:"";position:absolute;inset:0;width:var(--w);background:var(--gold);z-index:-1;border-radius:99px}
+.bar em{font:500 .8rem var(--s);letter-spacing:.1em;font-style:normal;text-align:right}
+
+.insight{padding:22px 0;border-top:1px solid rgba(30,74,60,.45)}
+#insights .insight{border-color:rgba(244,234,223,.45)}
+.insight p{margin:0}
+.insight h3{font-size:1.25rem}
+
+.poster img{width:100%;max-width:560px;height:auto;display:block;margin:28px auto 0;border-radius:18px;box-shadow:0 18px 40px rgba(30,74,60,.25)}
+.limits{padding-left:1.2rem}
+.btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px}
+.btn{display:inline-block;padding:15px 28px;border:2px solid var(--cream);font:500 .78rem var(--s);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--cream)}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:var(--green)}
+#miro{overflow:hidden;padding-bottom:110px}
+footer{background:var(--green);color:var(--cream)}
+footer .corners{background:var(--green)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:80px 0 56px}
+  .corners{font-size:.6rem;letter-spacing:.14em}
+  .gap{grid-template-columns:1fr;gap:2px}
+  .phases li{grid-template-columns:44px 1fr;gap:14px}
+  .hero{padding-bottom:170px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="cactus" viewBox="0 0 60 140"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M30 134V26" stroke-width="18"/><path d="M30 98H14V68" stroke-width="12"/><path d="M30 82h16V52" stroke-width="12"/></g></symbol><symbol id="bird" viewBox="0 0 40 16"><path d="M2 12Q10 0 20 10Q30 0 38 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol></svg>
+
+<div class="corners">
+  <div>Design<br>project<br>2025</div>
+  <div class="c">Wellness<br>tourism in India</div>
+  <div class="r"><a href="index.html#work">Back to<br>portfolio</a></div>
+</div>
+
+<header class="top">
+  <div class="hero">
+    <h1>Wellness tourism in India</h1>
+    <p>India gave the world Ayurveda and yoga. Travellers still struggle to find and trust a wellness centre. We researched why.</p>
+  </div>
+<i class="sun"></i><svg class="cactus" aria-hidden="true"><use href="#cactus"/></svg><svg class="hills" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true"><path fill="#1e4a3c" d="M0 150V70C150 20 300 30 450 80S800 125 1200 40V150z"/><path fill="#b9581f" d="M0 150V108C250 72 500 132 760 102S1050 82 1200 102V150z"/></svg>
+</header>
+
+<main>
+<section id="problem">
+  <div class="wrap">
+    <div class="quote">The challenge isn’t availability. It’s the missing user journey.</div>
+    <div class="stats">
+      <div><strong>$1.3T</strong>global wellness tourism market</div>
+      <div><strong>7–8%</strong>India’s share, against a 13% global average</div>
+      <div><strong>41–53%</strong>more spent by international wellness tourists than the average tourist</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"></div>
+
+<section id="context">
+  <div class="wrap">
+    <h2>Where we started</h2>
+    <p>India has over 5,000 years of healing knowledge and a wellness market above $15 billion. So why is its share so small?</p>
+    <p>We compared wellness tourism with medical tourism, where a structured, trust-driven process makes the journey clear. Then we benchmarked India against ten countries, including Bali, Thailand, Sri Lanka, Germany and Singapore.</p>
+    <p>India was the only one lacking all three system components: a mandatory national accreditation, a structured pre-visit health consultation, and a unified digital health record for international users. The offering is strong. The system around the user is fragmented.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>Six phases, from context to solution</h2>
+    <p>Our guiding question: what problems do people face during the wellness journey?</p>
+    <ol class="phases">
+      <li><span class="n">1</span><div><h3>Context building</h3><p>Market analysis and global benchmarking across 10 countries.</p></div></li>
+      <li><span class="n">2</span><div><h3>Research framing</h3><p>Defined the core question and compared the wellness ecosystem with medical tourism.</p></div></li>
+      <li><span class="n">3</span><div><h3>Primary research</h3><p>A case-based scenario approach using four methods.</p></div></li>
+      <li><span class="n">4</span><div><h3>Pattern making</h3><p>Pattern analysis, quantification, a stakeholder misalignment map and root cause analysis.</p></div></li>
+      <li><span class="n">5</span><div><h3>Insight framing</h3><p>Five insights, prioritised by impact against feasibility.</p></div></li>
+      <li><span class="n">6</span><div><h3>Solution framing</h3><p>Four design directions backed by a wellness framework.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<div class="strip b" aria-hidden="true"></div>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Primary research</h2>
+    <p>We heard from users, government bodies and providers, and we became clients ourselves.</p>
+    <div class="tiles">
+      <div class="slab r2 cut2 tile"><span class="big">12</span><h3>Retreat-goer interviews</h3><p>Domestic and NRI participants.</p></div>
+      <div class="slab r3 cut3 tile"><span class="big">3</span><h3>Government sessions</h3><p>QCI, NABH and the Ministry of Tourism.</p></div>
+      <div class="slab r1 cut1 tile"><span class="big">10</span><h3>Choice-based scenarios</h3><p>Domestic and international audiences deciding between centres.</p></div>
+      <div class="slab r2 cut3 tile"><span class="big">7</span><h3>Participatory audits</h3><p>We visited centres and spas, and enquired with trip planners, as clients.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <div class="wrap">
+    <h2>Five gaps in the system</h2>
+    <p>Mapped from research to booking, the problem sits in discovery and decision-making.</p>
+    <div class="gaps">
+      <div class="gap"><b>Discovery</b><span>Information about the wellness ecosystem is scattered.</span></div>
+      <div class="gap"><b>Clarity</b><span>No standard services or shared terminology.</span></div>
+      <div class="gap"><b>Trust</b><span>Weak certification and safety signals.</span></div>
+      <div class="gap"><b>Personalisation</b><span>No diagnosis before a treatment is purchased.</span></div>
+      <div class="gap"><b>Systemic</b><span>A fragmented, non-integrated user journey.</span></div>
+    </div>
+    <h3 style="margin-top:44px">How strongly each pattern showed up</h3>
+    <div class="bars">
+      <div class="bar"><div style="--w:100%">Non-transparency in communication</div><em>10/10</em></div>
+      <div class="bar"><div style="--w:100%">Needing multiple sources to validate</div><em>10/10</em></div>
+      <div class="bar"><div style="--w:100%">Users unaware of accreditation</div><em>10/10</em></div>
+      <div class="bar"><div style="--w:80%">Visual authenticity as a reason to choose</div><em>8/10</em></div>
+    </div>
+    <p style="margin-top:28px">Each actor defines wellness differently. Users choose by visuals and don’t know NABH exists. Centres call themselves hospitals for credibility but market as resorts. Government has no mandated definition. Travel agents sell resorts and spas as wellness.</p>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"></div>
+
+<section id="insights"><i class="moon"></i>
+  <div class="wrap">
+    <h2>Five insights</h2>
+    <div class="insight"><h3>Ayurveda is aftercare, not prevention</h3><p>It is adopted after other treatments fail, and use peaks in the 40–49 age group instead of being part of daily prevention.</p></div>
+    <div class="insight"><h3>Packaged wellness is not personalised care</h3><p>Traditional systems start with diagnosis. Commercial offerings are fixed packages built for scale. The mismatch confuses consumers.</p></div>
+    <div class="insight"><h3>Information is complex, inconsistent and unverifiable</h3><p>With no credible standard to check, users either freeze or choose purely on aesthetics.</p></div>
+    <div class="insight"><h3>Centres are stuck between clinical credibility and commercial appeal</h3><p>They call themselves hospitals to earn trust and market as resorts to attract tourists, which deepens the trust gap.</p></div>
+    <div class="insight"><h3>Wellness is treated as luxury, not infrastructure</h3><p>It sits at the top of the Indian lifestyle hierarchy, conditional and aspirational. Oral, lineage-based knowledge also leaves outcomes undocumented.</p></div>
+  </div>
+</section>
+
+<section id="directions">
+  <div class="wrap">
+    <h2>Four design directions</h2>
+    <div class="tiles">
+      <div class="slab r1 cut1 tile"><h3>Standardise</h3><ul><li>NABH reform</li><li>Tiered certification</li><li>Patient journey protocol</li><li>Wellness definition framework</li></ul></div>
+      <div class="slab r2 cut2 tile"><h3>Connect</h3><ul><li>National wellness directory</li><li>OTA and e-AYUSH integration</li><li>Planner network</li></ul></div>
+      <div class="slab r3 cut3 tile"><h3>Communicate</h3><ul><li>Treatment legibility</li><li>Outcome measurement tool</li><li>Trust badge</li><li>Multilingual UX</li></ul></div>
+      <div class="slab r2 cut1 tile"><h3>Leverage</h3><ul><li>Brand India Wellness</li><li>Ministry of Tourism alignment</li><li>Corporate wellness programmes</li></ul></div>
+    </div>
+    <div class="insight" style="margin-top:36px"><h3>Information layer for decisions</h3><p>A journey-based, personalised website prototype. A “not sure what you want?” section matches concerns to treatments, and each treatment is explained in plain language.</p></div>
+    <div class="insight"><h3>Outcome measurement tool</h3><p>Ayurvedic questionnaires are clinically meaningful but inconsistent. We separated prakriti, a person’s innate constitution, from vikriti, their current imbalance, so patients can track vikriti over time and see real outcome evidence.</p></div>
+  </div>
+</section>
+
+<div class="strip b" aria-hidden="true"></div>
+
+<section id="poster" class="poster">
+  <div class="wrap">
+    <h2>The poster</h2>
+    <img src="images/wellness-poster.png" alt="Poster with tree-ring prints and the title Wellness Tourism in India, showing the $1.3 trillion market and the missing user journey" loading="lazy">
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <h2>What limited the research</h2>
+    <ul class="limits">
+      <li>Government bodies were largely unreachable or unresponsive.</li>
+      <li>Booking a teleconsultation through the centres’ own channels was not possible.</li>
+      <li>Government digital presence was fragmented and hard to navigate.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="miro"><svg class="birds" style="left:62%;top:60px" aria-hidden="true"><use href="#bird"/></svg><svg class="birds" style="left:70%;top:90px;width:30px" aria-hidden="true"><use href="#bird"/></svg><svg class="birds" style="left:80%;top:48px;width:36px" aria-hidden="true"><use href="#bird"/></svg><svg class="cactus" style="left:auto;right:7%;bottom:0;color:#b9581f" aria-hidden="true"><use href="#cactus"/></svg>
+  <div class="wrap">
+    <h2>See the thinking behind it</h2>
+    <p>The Miro board holds our maps, synthesis and working notes.</p>
+    <div class="btns"><a class="btn" href="presentation.html">View the full presentation</a>
+      <a class="btn" href="https://miro.com/app/board/uXjVGwrkvhQ=/?share_link_id=6981979690" target="_blank" rel="noopener">Open the Miro board</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="corners">
+    <div>Design<br>project<br>2025</div>
+    <div>Wellness<br>tourism in India</div>
+    <div class="r">Anamika<br>Navisha Rai<br>Sanchi Sikka</div>
+  </div>
+</footer>
+</body>
+</html>
