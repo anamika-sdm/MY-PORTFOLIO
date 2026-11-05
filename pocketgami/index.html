@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pocketgami — Anamika · Portfolio</title>
+<meta name="description" content="Pocketgami: a pocket origami ritual designed for one socially anxious user. Design for One, National Institute of Design, Gandhinagar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6F0;
+  --surface:#FFFFFF;
+  --ink:#1D3836;
+  --ink-2:#4C5F5C;
+  --teal:#2D6361;
+  --teal-deep:#21504E;
+  --on-teal:#F3F5E4;
+  --lime:#E2E58C;
+  --lime-soft:#EFF1C6;
+  --on-lime:#1D3836;
+  --numeral:#C4C9C0;
+  --line:#DCE0D6;
+  --orange:#E8893C;
+  --lilac:#A7A6E6;
+  --sky:#8FB2E3;
+  --shadow:0 24px 60px -28px rgba(29,56,54,.28);
+  --r-xl:44px; --r-lg:32px; --r-md:22px; --r-sm:14px;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121F1E; --surface:#192A29; --ink:#E7ECE2; --ink-2:#A9B6B1;
+    --teal:#2A5856; --teal-deep:#224947; --on-teal:#EEF1DC;
+    --lime:#D3D77B; --lime-soft:#2B3A2C; --on-lime:#17302E;
+    --numeral:#3A4C4A; --line:#2B3E3C; --shadow:0 24px 60px -30px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121F1E; --surface:#192A29; --ink:#E7ECE2; --ink-2:#A9B6B1;
+  --teal:#2A5856; --teal-deep:#224947; --on-teal:#EEF1DC;
+  --lime:#D3D77B; --lime-soft:#2B3A2C; --on-lime:#17302E;
+  --numeral:#3A4C4A; --line:#2B3E3C; --shadow:0 24px 60px -30px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.02em;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:10px}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.lead{font-size:clamp(18px,2vw,21px);line-height:1.55;color:var(--ink-2);max-width:62ch}
+.muted{color:var(--ink-2)}
+.small{font-size:14.5px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;padding:12px 0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--paper)}
+.bar-in{display:flex;align-items:center;gap:16px;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 20px;position:relative;overflow:hidden}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.brand span{color:var(--orange)}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;font-size:14px;padding:8px 12px;border-radius:999px;white-space:nowrap;color:var(--ink-2);transition:background .2s,color .2s}
+.nav a b{font-family:var(--display);font-weight:700;color:var(--ink);margin-right:5px}
+.nav a:hover{background:var(--lime-soft);color:var(--ink)}
+.nav a.on{background:var(--teal);color:var(--on-teal)}
+.nav a.on b{color:var(--lime)}
+.theme-btn{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center}
+.progress{position:absolute;left:0;bottom:0;height:3px;background:var(--lime);width:0;border-radius:3px}
+@media (max-width:1240px){.nav a span{display:none}.nav a b{margin:0}}
+@media (max-width:640px){.nav{display:none}.bar-in{justify-content:space-between}}
+
+/* hero */
+.hero{padding:28px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:20px}
+.cover{background:var(--lime);color:var(--on-lime);border-radius:var(--r-xl);padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:26px;position:relative;overflow:hidden}
+.cover h1{font-size:clamp(46px,7.2vw,96px);font-weight:800;letter-spacing:-.045em;line-height:.9}
+.cover .sub{font-family:var(--display);font-size:clamp(22px,2.6vw,30px);font-weight:600;line-height:1.15;max-width:18ch}
+.cover-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;padding:7px 13px;border-radius:999px;background:color-mix(in srgb,var(--on-lime) 9%,transparent)}
+.hero-photo{border-radius:var(--r-xl);overflow:hidden;position:relative;min-height:420px;background:var(--teal)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-photo .tag{position:absolute;left:18px;bottom:18px;right:18px;background:var(--teal);color:var(--on-teal);border-radius:var(--r-md);padding:16px 20px;display:flex;justify-content:space-between;gap:16px;align-items:end}
+.hero-photo .tag strong{font-family:var(--display);font-size:20px;display:block;line-height:1.1}
+.hero-photo .tag span{font-size:13.5px;opacity:.85}
+.hero-photo .yr{font-family:var(--display);font-weight:800;font-size:28px;color:var(--lime)}
+
+/* the fold sheet */
+.sheet-block{background:var(--surface);border-radius:var(--r-lg);padding:22px;display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center;margin-top:20px;border:1px solid var(--line)}
+.sheet{width:200px;aspect-ratio:1;touch-action:none;user-select:none;-webkit-user-select:none;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.sheet svg{width:100%;height:100%;display:block}
+.sheet polygon{fill:var(--paper);stroke:none;transform-box:fill-box;transform-origin:center;transition:fill .35s ease}
+.sheet polygon.f{fill:var(--c)}
+.sheet polygon.flip{animation:flip .45s ease}
+@keyframes flip{0%{transform:scale(1)}50%{transform:scale(.15) rotate(25deg)}100%{transform:scale(1)}}
+.sheet .crease{stroke:var(--ink);stroke-opacity:.35;stroke-width:.6;fill:none;pointer-events:none}
+.sheet .valley{stroke-dasharray:2 2}
+.sheet-copy h3{font-size:24px;margin-bottom:8px}
+.sheet-copy p{color:var(--ink-2);margin-bottom:12px;max-width:46ch}
+.sheet-stat{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.meter{flex:1;min-width:120px;height:10px;border-radius:999px;background:var(--lime-soft);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--teal);border-radius:999px;transition:width .4s ease}
+.btn{border:1px solid var(--line);background:var(--paper);padding:9px 16px;border-radius:999px;font-size:14px;transition:background .2s}
+.btn:hover{background:var(--lime-soft)}
+.btn.solid{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.btn.solid:hover{background:var(--teal-deep)}
+.calm-note{font-family:var(--display);font-weight:600;color:var(--teal);min-height:1.4em}
+:root[data-theme="dark"] .calm-note{color:var(--lime)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .calm-note{color:var(--lime)}}
+
+/* sections */
+section.chapter{padding:clamp(64px,9vw,120px) 0 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.num{font-family:var(--display);font-weight:800;font-size:clamp(90px,14vw,180px);line-height:.78;color:var(--numeral);letter-spacing:-.06em}
+.sec-head h2{font-size:clamp(38px,5.6vw,68px);color:var(--teal)}
+.sec-head h2 small{display:block;font-size:.42em;color:var(--ink-2);font-weight:600;letter-spacing:-.01em;margin-bottom:.3em}
+:root[data-theme="dark"] .sec-head h2{color:var(--lime)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sec-head h2{color:var(--lime)}}
+.sec-head .rule{height:3px;width:56px;background:var(--teal);border-radius:3px;margin-top:16px}
+h3.t{font-size:clamp(26px,3vw,34px);color:var(--ink);margin-bottom:14px}
+h4{font-size:19px;margin-bottom:8px}
+
+.panel{border-radius:var(--r-lg);padding:clamp(22px,3vw,36px)}
+.p-lime{background:var(--lime);color:var(--on-lime)}
+.p-teal{background:var(--teal);color:var(--on-teal)}
+.p-teal h3,.p-teal h4{color:var(--lime)}
+.p-soft{background:var(--lime-soft)}
+.p-card{background:var(--surface);border:1px solid var(--line)}
+.p-teal .muted{color:color-mix(in srgb,var(--on-teal) 78%,transparent)}
+.p-lime .muted{color:color-mix(in srgb,var(--on-lime) 72%,transparent)}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g-asym{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+.stack{display:grid;gap:20px}
+.mt{margin-top:20px}.mt2{margin-top:44px}
+@media (max-width:900px){.hero-grid,.g2,.g3,.g-asym{grid-template-columns:1fr}.hero-photo{min-height:340px}.sheet-block{grid-template-columns:1fr;justify-items:start}}
+
+figure{margin:0}
+.ph{border-radius:var(--r-md);overflow:hidden;background:var(--line);position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .5s ease}
+.ph:hover img{transform:scale(1.025)}
+.ph.contain{background:#fff}
+.ph.contain img{object-fit:contain}
+figcaption{font-size:14px;color:var(--ink-2);margin-top:8px;padding-inline:4px}
+.ratio-wide{aspect-ratio:16/10}.ratio-sq{aspect-ratio:1}.ratio-tall{aspect-ratio:4/5}
+
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.clean li{padding-left:22px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:3px;background:currentColor;opacity:.45;transform:rotate(45deg)}
+
+.quote{font-family:var(--display);font-size:clamp(24px,3vw,36px);font-weight:600;line-height:1.18;letter-spacing:-.02em}
+.quote cite{display:block;font-family:var(--body);font-style:normal;font-size:15px;font-weight:500;margin-top:14px;opacity:.75;letter-spacing:0}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:var(--surface);padding:10px 18px;border-radius:999px;font-size:15px;transition:background .2s,color .2s,border-color .2s}
+.tab:hover{border-color:var(--teal)}
+.tab[aria-selected="true"]{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.tabpanel[hidden]{display:none}
+.tabpanel{animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 18px}
+.stat{background:color-mix(in srgb,currentColor 8%,transparent);border-radius:var(--r-sm);padding:10px 16px}
+.stat b{font-family:var(--display);font-size:26px;display:block;line-height:1.05}
+.stat span{font-size:13.5px;opacity:.8}
+
+/* versus */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+.vs .side{padding:clamp(22px,3vw,34px);border-radius:var(--r-lg)}
+.vs .mid{display:grid;place-items:center;width:0;position:relative;z-index:2}
+.vs .mid span{width:64px;height:64px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:20px}
+.vs .side.pick{background:var(--teal);color:var(--on-teal);padding-left:clamp(22px,5vw,56px)}
+.vs .side.other{padding-right:clamp(22px,5vw,56px)}
+@media (max-width:760px){.vs .side.pick{padding-top:48px;padding-left:24px}.vs .side.other{padding-bottom:48px;padding-right:24px}}
+.vs .side.pick h4{color:var(--lime)}
+.vs .side.other{background:var(--surface);border:1px solid var(--line)}
+.badge{display:inline-block;font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--lime);color:var(--on-lime);margin-bottom:10px}
+@media (max-width:760px){.vs{grid-template-columns:1fr}.vs .mid{width:auto;height:0}}
+
+/* compare chart */
+.cmp{display:grid;gap:16px}
+.cmp-row{display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:center}
+.cmp-bars{display:grid;gap:6px}
+.cmp-bar{height:16px;border-radius:999px;background:var(--lime-soft);overflow:hidden;position:relative}
+.cmp-bar i{position:absolute;inset:0 auto 0 0;border-radius:999px;transition:width .6s cubic-bezier(.3,.8,.3,1)}
+.cmp-bar.b i{background:var(--numeral)}
+.cmp-bar.n i{background:var(--teal)}
+.legend{display:flex;gap:16px;font-size:14px;color:var(--ink-2);margin-top:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+
+/* donut */
+.donut-wrap{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+.donut circle{fill:none;stroke-width:28;transition:stroke-width .25s,opacity .25s;cursor:pointer}
+.donut circle.dim{opacity:.35}
+.donut-legend button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:10px;background:none;border:0;padding:10px 12px;border-radius:12px;text-align:left}
+.donut-legend button:hover,.donut-legend button.on{background:var(--lime-soft)}
+.donut-legend i{width:12px;height:12px;border-radius:4px;display:inline-block;margin-right:8px}
+.donut-legend b{font-family:var(--display)}
+@media (max-width:560px){.donut-wrap{grid-template-columns:1fr}}
+
+/* empathy map */
+.emap{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.eq{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;text-align:left;transition:background .25s,color .25s,transform .25s;min-height:150px}
+.eq h4{font-size:22px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.eq h4 small{font-family:var(--body);font-weight:500;font-size:13px;opacity:.65}
+.eq .body{display:none}
+.eq .hint{color:var(--ink-2);font-size:15px}
+.eq[aria-expanded="true"]{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.eq[aria-expanded="true"] h4{color:var(--lime)}
+.eq[aria-expanded="true"] .body{display:block}
+.eq[aria-expanded="true"] .hint{display:none}
+.eq ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15.5px}
+.emap .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:700;font-size:15px;line-height:1.1;border:6px solid var(--paper);pointer-events:none}
+@media (max-width:700px){.emap{grid-template-columns:1fr}.emap .core{display:none}}
+
+/* AEIOU */
+.aeiou{display:grid;grid-template-columns:auto 1fr;gap:20px}
+.letters{display:flex;flex-direction:column;gap:10px}
+.letter{width:76px;height:76px;border-radius:24px;border:1px solid var(--line);background:var(--surface);font-family:var(--display);font-weight:800;font-size:34px;display:grid;place-items:center;transition:background .2s,color .2s}
+.letter[aria-selected="true"]{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+.aeiou .tabpanel{position:relative;overflow:hidden;min-width:0}
+.aeiou .ghost{position:absolute;right:-10px;bottom:-60px;font-family:var(--display);font-weight:800;font-size:260px;line-height:1;color:var(--lime);opacity:.18;pointer-events:none}
+@media (max-width:640px){.aeiou{grid-template-columns:1fr}.letters{flex-direction:row}.letter{width:56px;height:56px;font-size:26px;border-radius:18px}}
+
+/* insights */
+.ins-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ins{border:1px solid var(--line);background:var(--surface);border-radius:var(--r-md);padding:16px 16px 18px;text-align:left;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,background .2s,transform .2s;min-height:136px}
+.ins:hover{border-color:var(--teal);transform:translateY(-2px)}
+.ins .l{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--numeral)}
+.ins .pair{font-size:14px;line-height:1.35}
+.ins .pair em{font-style:normal;color:var(--ink-2);display:block;font-size:12.5px;margin:3px 0}
+.ins.chosen{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+.ins.chosen .l{color:var(--teal)}
+.ins.chosen .pair em{color:color-mix(in srgb,var(--on-lime) 70%,transparent)}
+.ins[aria-pressed="true"]{outline:3px solid var(--teal);outline-offset:2px}
+.ins-detail{margin-top:16px}
+@media (max-width:900px){.ins-grid{grid-template-columns:repeat(2,1fr)}}
+
+.rq{text-align:left}
+.rq .quote{max-width:24ch}
+
+/* material chart */
+.mchart{display:grid;gap:6px}
+.mrow{display:grid;grid-template-columns:150px 1fr 48px;gap:12px;align-items:center;background:none;border:0;padding:6px 8px;border-radius:12px;text-align:left;transition:background .2s}
+.mrow:hover,.mrow.on{background:var(--lime-soft)}
+.mrow .nm{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow .tr{height:14px;border-radius:999px;background:color-mix(in srgb,var(--ink) 6%,transparent);position:relative;overflow:hidden}
+.mrow .tr i{position:absolute;inset:0 auto 0 0;border-radius:999px;background:var(--numeral);transition:width .6s cubic-bezier(.3,.8,.3,1)}
+.mrow.top .tr i{background:var(--teal)}
+.mrow .v{font-family:var(--display);font-weight:700;font-size:15px;text-align:right}
+.mdetail{position:sticky;top:96px}
+@media (max-width:560px){.mrow{grid-template-columns:96px 1fr 40px}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .c{padding:8px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14.5px}
+.p-teal .chips .c{background:color-mix(in srgb,var(--on-teal) 12%,transparent);border-color:transparent}
+
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(320px,78%);gap:14px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.rail>*{scroll-snap-align:start}
+
+.guides{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.guide{border-radius:var(--r-md);padding:18px;background:color-mix(in srgb,var(--on-teal) 10%,transparent)}
+.guide b{font-family:var(--display);font-size:19px;display:block;color:var(--lime);margin-bottom:4px}
+.guide span{font-size:14.5px;opacity:.88}
+@media (max-width:900px){.guides{grid-template-columns:repeat(2,1fr)}}
+
+/* prototypes */
+.proto{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.proto .imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.proto .imgs .ph{aspect-ratio:4/5}
+.rating{display:flex;align-items:center;gap:14px;margin:14px 0}
+.rating .big{font-family:var(--display);font-weight:800;font-size:48px;line-height:1}
+.rating .big small{font-size:18px;opacity:.6}
+.rating .meter{height:12px}
+.status{display:inline-block;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600}
+.status.out{background:color-mix(in srgb,var(--ink) 10%,transparent)}
+.status.next{background:var(--lime-soft);color:var(--ink)}
+.status.win{background:var(--orange);color:#2A1606}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15.5px;margin-top:8px}
+.kv dt{font-weight:600}
+.kv dd{margin:0}
+@media (max-width:900px){.proto{grid-template-columns:1fr}}
+
+.mini-rank{display:grid;gap:10px;margin-top:6px}
+.mini-rank div{display:grid;grid-template-columns:120px 1fr 40px;gap:10px;align-items:center;font-size:14.5px}
+.mini-rank .tr{height:10px;border-radius:999px;background:color-mix(in srgb,currentColor 12%,transparent);overflow:hidden}
+.mini-rank .tr i{display:block;height:100%;background:var(--lime);border-radius:999px}
+
+/* ritual */
+.ritual{display:grid;grid-template-columns:320px 1fr;gap:20px}
+.steps{display:grid;gap:10px;align-content:start}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;text-align:left;padding:14px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--surface);transition:background .25s,color .25s}
+.step .n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;background:var(--lime-soft)}
+.step b{font-family:var(--display);font-size:18px;display:block;line-height:1.15}
+.step span{font-size:13.5px;color:var(--ink-2)}
+.step[aria-selected="true"]{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.step[aria-selected="true"] .n{background:var(--lime);color:var(--on-lime)}
+.step[aria-selected="true"] span{color:color-mix(in srgb,var(--on-teal) 78%,transparent)}
+.stage{border-radius:var(--r-lg);background:var(--lime-soft);padding:clamp(22px,3vw,36px);display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center;min-height:340px}
+.stage svg{width:100%;height:auto}
+.stage h3{font-size:30px;color:var(--teal);margin-bottom:10px}
+:root[data-theme="dark"] .stage h3{color:var(--lime)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stage h3{color:var(--lime)}}
+.flipcard{perspective:900px;width:100%;max-width:240px;aspect-ratio:1;background:none;border:0;padding:0}
+.flipcard .inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,.8,.3,1);transform-style:preserve-3d}
+.flipcard.turned .inner{transform:rotateY(180deg)}
+.flipcard .face{position:absolute;inset:0;border-radius:22px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;padding:22px;box-shadow:var(--shadow)}
+.flipcard .front{background:var(--sky)}
+.flipcard .back{background:#fff;transform:rotateY(180deg);color:#1D3836;font-family:var(--display);font-weight:600;font-size:22px;line-height:1.15;text-align:center;background-image:linear-gradient(45deg,transparent 49.4%,rgba(29,56,54,.14) 49.5%,rgba(29,56,54,.14) 50.5%,transparent 50.6%),linear-gradient(-45deg,transparent 49.4%,rgba(29,56,54,.14) 49.5%,rgba(29,56,54,.14) 50.5%,transparent 50.6%);background-size:60px 60px}
+.flipcard .front span{font-size:14px;color:#1D3836;background:rgba(255,255,255,.7);padding:6px 12px;border-radius:999px}
+@media (max-width:900px){.ritual,.stage{grid-template-columns:1fr}.stage>div:first-child{max-width:240px}}
+
+/* accordion */
+details.acc{border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line);padding:0 22px;transition:background .2s}
+details.acc+details.acc{margin-top:10px}
+details.acc summary{list-style:none;cursor:pointer;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--display);font-weight:700;font-size:19px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .pm{width:32px;height:32px;border-radius:50%;background:var(--lime-soft);display:grid;place-items:center;flex:none;transition:transform .3s}
+details.acc[open] summary .pm{transform:rotate(45deg);background:var(--lime)}
+details.acc .ab{padding:0 0 20px;color:var(--ink-2);max-width:72ch}
+
+.palette{display:flex;gap:10px;flex-wrap:wrap}
+.palette i{width:44px;height:44px;border-radius:14px;display:block}
+
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.person{background:color-mix(in srgb,var(--on-teal) 10%,transparent);border-radius:var(--r-md);padding:16px 18px}
+.person b{display:block;font-family:var(--display);font-size:18px}
+.person span{font-size:14px;opacity:.8}
+@media (max-width:760px){.team{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.team{grid-template-columns:1fr}}
+
+footer{padding:80px 0 60px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(14,26,25,.86);display:none;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 24px) 24px calc(env(safe-area-inset-bottom,0px) + 24px)}
+.lb.open{display:grid;animation:fadeIn .25s ease}
+.lb img{max-height:84vh;max-width:min(1300px,100%);border-radius:var(--r-md);object-fit:contain;background:#fff}
+.lb p{color:#EEF1DC;text-align:center;margin-top:12px;font-size:15px}
+.lb button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);right:18px;width:46px;height:46px;border-radius:50%;border:0;background:var(--lime);color:#17302E;font-size:24px;line-height:1}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+#mTabs .tab{padding:7px 13px;font-size:14px}
+.g-asym>*,.g2>*,.g3>*{min-width:0}
+@media (max-width:640px){.sec-head{grid-template-columns:1fr;gap:6px}.num{font-size:88px}.sec-head h2{font-size:36px}}
+.sec-head h2{overflow-wrap:break-word}
+.flipcard{display:block;width:240px;max-width:100%;height:auto;cursor:pointer}
+.flipcard .inner{display:block}
+.stage>div:first-child{min-width:0}
+/* glance */
+.glance{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(20px,3vw,32px)}
+.glance-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.glance-top h2{font-size:clamp(24px,2.6vw,30px);color:var(--ink)}
+.glance-top .acts{display:flex;gap:8px;flex-wrap:wrap}
+.gl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gl{display:flex;flex-direction:column;gap:8px;text-decoration:none;padding:18px 18px 16px;border-radius:var(--r-md);background:var(--paper);border:1px solid transparent;transition:background .25s,border-color .25s,transform .25s}
+.gl:hover,.gl:focus-visible{background:var(--lime-soft);border-color:var(--teal);transform:translateY(-3px)}
+.gl .gn{display:flex;justify-content:space-between;align-items:center;order:2;margin-top:auto}
+.gl .gn b{font-family:var(--display);font-weight:800;font-size:13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--on-lime)}
+.gl .gn svg{opacity:.45;transition:opacity .2s,transform .2s}
+.gl:hover .gn svg{opacity:1;transform:translateY(2px)}
+.gl h3{font-size:20px;color:var(--teal)}
+.gl p{font-size:14.5px;line-height:1.45;color:var(--ink-2);margin:0}
+.gl.hl{background:var(--teal)}
+.gl.hl h3{color:var(--lime)}.gl.hl p{color:color-mix(in srgb,var(--on-teal) 82%,transparent)}.gl.hl .gn svg{color:var(--on-teal)}
+.gl.hl:hover{background:var(--teal-deep)}
+:root[data-theme="dark"] .gl h3{color:var(--lime)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gl h3{color:var(--lime)}}
+@media (max-width:1000px){.gl-grid{grid-template-columns:repeat(2,1fr)}.gl.hl{grid-column:1/-1}}
+@media (max-width:520px){.gl-grid{grid-template-columns:1fr}}
+.btn.lime{background:var(--lime);color:var(--on-lime);border-color:var(--lime);font-weight:600}
+.btn.lime:hover{background:var(--lime-soft)}
+.btn svg{vertical-align:-3px;margin-right:6px}
+section.chapter:target .sec-head h2,.flash .sec-head h2{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{background:transparent}30%{background:var(--lime-soft)}}
+.sec-head h2{border-radius:14px}
+/* poster viewer */
+.lb.poster{place-items:start center;overflow:auto}
+.lb.poster figure{margin:auto}
+.lb.poster img{max-height:none;width:min(900px,100%)}
+.lb .lb-acts{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);left:18px;display:none}
+.lb.poster .lb-acts{display:flex}
+.lb.poster,.lb.poster button{position:fixed}
+.lb.poster .lb-acts a{position:static}
+.sheet-block{margin-top:0}
+.lb.poster.open{display:block;padding:76px 16px 32px}
+.lb.poster figure{width:min(900px,100%);margin:0 auto}
+.lb.poster img{width:100%}
+
+/* portfolio: the bar back to the rest of the work */
+.pf-bar{background:var(--teal);color:var(--on-teal);font-family:var(--body);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:40px}
+.pf-bar a{text-decoration:none;opacity:.9}
+.pf-bar a:hover{opacity:1;text-decoration:underline}
+.pf-bar nav{display:flex;gap:20px}
+.pf-bar .pf-tag{opacity:.75}
+@media (max-width:760px){.pf-bar nav,.pf-bar .pf-tag{display:none}}
+
+/* portfolio: soft arches, as on the portfolio's project cards */
+.hero-photo{border-radius:clamp(120px,18vw,240px) clamp(120px,18vw,240px) var(--r-xl) var(--r-xl)}
+.cover{border-radius:var(--r-xl) var(--r-xl) var(--r-xl) clamp(90px,12vw,160px)}
+
+/* portfolio: the soft wavy edge into the closing band */
+.pf-end{position:relative;margin-top:40px;background:var(--teal-deep);color:var(--on-teal);padding:36px 0 44px}
+.pf-end::before{content:"";position:absolute;left:0;right:0;top:-39px;height:40px;pointer-events:none;background:var(--teal-deep);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V32C180 0 360 6 560 28S960 56 1200 14V60z'/%3E%3C/svg%3E") bottom/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V32C180 0 360 6 560 28S960 56 1200 14V60z'/%3E%3C/svg%3E") bottom/100% 100% no-repeat}
+.pf-end .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 28px}
+.pf-end p{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,26px)}
+.pf-foot{display:flex;flex-wrap:wrap;gap:10px}
+.pf-foot a{text-decoration:none;padding:10px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--on-teal) 35%,transparent);font-size:15px;transition:background .2s,color .2s}
+.pf-foot a:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+footer{padding-bottom:20px}
+</style>
+</head>
+<body>
+<div class="pf-bar">
+  <div class="wrap">
+    <a href="../index.html#work">← Anamika · Portfolio</a>
+    <span class="pf-tag">Project 05 · Design for One</span>
+    <nav aria-label="Portfolio"><a href="../index.html">Home</a><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav>
+  </div>
+</div>
+<div class="bar">
+  <div class="wrap">
+    <div class="bar-in">
+      <a href="#top" class="brand">Pocket<span>gami</span></a>
+      <nav class="nav" aria-label="Case study sections">
+        <a href="#brief"><b>01</b><span>Brief</span></a>
+        <a href="#problem"><b>02</b><span>Problem</span></a>
+        <a href="#insight"><b>03</b><span>Insight</span></a>
+        <a href="#intent"><b>04</b><span>Design intent</span></a>
+        <a href="#prototypes"><b>05</b><span>Prototypes</span></a>
+        <a href="#outcome"><b>06</b><span>Outcome</span></a>
+        <a href="#reflection"><b>07</b><span>Reflection</span></a>
+      </nav>
+      <button class="btn lime" data-poster style="flex:none;padding:8px 14px">Poster</button>
+      <button class="theme-btn" id="themeBtn" aria-label="Switch light or dark theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="cover">
+        <h1>Pocketgami</h1>
+        <p class="sub">Channelling nervousness into origami, one crease at a time.</p>
+        <p class="muted" style="max-width:44ch;margin:0">A pocket-sized origami ritual designed for one socially anxious student.</p>
+        <div class="cover-meta">
+          <span class="chip">Design for One</span>
+          <span class="chip">NID Gandhinagar, 2025</span>
+          <span class="chip">Team of 6, six disciplines</span>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="images/pg-01.jpg" alt="Three finished Pocketgami tessellations in blue, orange and lilac in front of the open holder" data-zoom data-cap="Finished tessellations with the Pocketgami holder">
+        <div class="tag">
+          <div><strong>Final solution</strong><span>Tearable crease-pattern sheets and a holder for finished folds</span></div>
+          <div class="yr">2025</div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="glance">
+      <div class="glance-top">
+        <h2>The project at a glance</h2>
+        <div class="acts">
+          <button class="btn lime" data-poster><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>View poster</button>
+        </div>
+      </div>
+      <div class="gl-grid">
+        <a class="gl" href="#brief"><span class="gn"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><h3>Brief</h3><p>Design for one real person on campus, not for the masses.</p></a>
+        <a class="gl" href="#problem"><span class="gn"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><h3>Problem</h3><p>Subject B’s trust issues create a major barrier in how he communicates with people.</p></a>
+        <a class="gl" href="#insight"><span class="gn"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><h3>Insight</h3><p>Anxiety makes him fidget, but he finds calm in slow, familiar, predictable things.</p></a>
+        <a class="gl" href="#intent"><span class="gn"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><h3>Design intent</h3><p>Turn anxious, repetitive motion into a grounding ritual with a tactile, familiar object.</p></a>
+        <a class="gl hl" href="#outcome"><span class="gn"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><h3>Outcome</h3><p>Pocketgami: tearable origami sheets with crease patterns and a holder for finished folds. Rated 8/10 by him, then validated in a real social setting.</p></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 01 BRIEF -->
+<section class="chapter" id="brief">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">01</div><div><h2><small>Introduction</small>Brief</h2><div class="rule"></div></div></div>
+    <div class="g-asym">
+      <p class="lead" style="margin:0">Design for One asked us to find one real person at NID Gandhinagar and design only for them: their habits, quirks and needs, understood in depth.</p>
+      <div class="panel p-teal">
+        <h4>How we got there</h4>
+        <div class="chips mt"><span class="c">Brain dumps</span><span class="c">3 interview rounds</span><span class="c">Quirks and outliers</span><span class="c">Contextual inquiry</span><span class="c">Empathy map</span><span class="c">Causal map</span><span class="c">Bodystorming</span><span class="c">4 prototypes</span><span class="c">Validation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROBLEM -->
+<section class="chapter" id="problem">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">02</div><div><h2><small>Research</small>Problem</h2><div class="rule"></div></div></div>
+
+    <div class="tabs" role="tablist" aria-label="Interview rounds">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="r1">Round 1 · 7 people</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="r2" tabindex="-1">Round 2 · 3 people</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="r3" tabindex="-1">Round 3 · 6 people</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="r1">
+      <div class="g-asym">
+        <div class="panel p-card">
+          <p class="muted">Open conversations to collect personal problems and get out of our own bubble. Among them: a light sleeper, someone distressed by loud sounds, a board-game host with no way to carry games, and <strong style="color:var(--ink)">someone whose trust issues created a major communication barrier.</strong></p>
+          <p class="small muted" style="margin:0">That last one stayed with us, but it was still too broad to design for.</p>
+        </div>
+        <figure class="ph ratio-wide"><img src="images/pg-02.jpg" alt="Team interviewing a subject in the studio" data-zoom data-cap="Interview round 1"></figure>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="r2" hidden>
+      <div class="panel p-card">
+        <p class="muted">50–60 minute interviews on trust and communication, asking “why” until we reached something designable. Questions like: who is a good communicator in your life, who do you reach out to in distress, and how?</p>
+        <p class="small muted" style="margin:0">Patterns sharpened, but we needed more depth per person.</p>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="r3" hidden>
+      <div class="g-asym">
+        <div class="panel p-card">
+          <p class="muted">62 questions, 70 minutes each, across themes like trust, non-verbal digital cues, vulnerability and silence.</p>
+          <p class="muted" style="margin:0"><strong style="color:var(--ink)">Affinity mapping failed us here:</strong> it surfaced what everyone shared, the opposite of what Design for One needs. So we flipped it and looked for outliers within each person.</p>
+        </div>
+        <figure class="ph ratio-wide"><img src="images/pg-03.jpg" alt="Clusters of yellow sticky notes on a dark table" data-zoom data-cap="The affinity map that led to overly broad findings"></figure>
+      </div>
+    </div>
+
+    <div class="g-asym mt2">
+      <div class="panel p-teal">
+        <span class="badge">Our one: Subject B</span>
+        <h3 class="t" style="color:var(--lime)">Why him</h3>
+        <ul class="clean">
+          <li>Ambiverted, so we could see communication from both sides.</li>
+          <li>Rarely uses visuals; reads emojis in ways that aren’t typical of Gen Z.</li>
+          <li>Little feel for tone or punctuation in text.</li>
+          <li>Believes the length of a message is proportional to the problem.</li>
+          <li>Keeps notifications off and replies only when ready. Ragging at his previous college changed how he communicates.</li>
+        </ul>
+      </div>
+      <div class="panel p-lime">
+        <p class="small" style="font-weight:600;margin-bottom:10px">Problem statement</p>
+        <p class="quote" style="font-size:clamp(22px,2.6vw,30px)">Subject B’s trust issues lead to a major communication barrier with people.</p>
+        <p class="small" style="font-weight:600;margin:18px 0 6px">Research question</p>
+        <p style="margin:0">How can we help an anxious user who fears social judgment engage with others while keeping a sense of control?</p>
+      </div>
+    </div>
+
+    <h3 class="t mt2">Empathy map</h3>
+    <div class="emap" id="emap">
+      <button class="eq" aria-expanded="true"><h4>Says</h4><p class="hint">Open</p><div class="body"><ul><li>“Texting feels confusing, the intensity of tone always gets lost.”</li><li>“I’d rather call or meet; it feels more real.”</li><li>“Long messages usually mean something’s wrong.”</li></ul></div></button>
+      <button class="eq" aria-expanded="false"><h4>Thinks</h4><p class="hint">Open</p><div class="body"><ul><li>“I need to feel safe before opening up.”</li><li>“Silence doesn’t mean disinterest.”</li><li>“Digital spaces are for necessity, not connection.”</li></ul></div></button>
+      <button class="eq" aria-expanded="false"><h4>Does</h4><p class="hint">Open</p><div class="body"><ul><li>Keeps notifications off; checks his phone intentionally.</li><li>Replies but rarely initiates.</li><li>Uses humour or sarcasm once comfortable.</li></ul></div></button>
+      <button class="eq" aria-expanded="false"><h4>Feels</h4><p class="hint">Open</p><div class="body"><ul><li>Anxious when misunderstood or rushed online.</li><li>Calm in safe, predictable spaces.</li><li>More authentic offline.</li></ul></div></button>
+      <div class="core">Subject B</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 INSIGHT -->
+<section class="chapter" id="insight">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">03</div><div><h2><small>Synthesis</small>Insight</h2><div class="rule"></div></div></div>
+    <div class="g2">
+      <figure><div class="ph" style="aspect-ratio:1500/863"><img src="images/pg-04.jpg" alt="Persona map of Subject B with five colour-coded clusters" data-zoom data-cap="Persona map"></div><figcaption>Persona map</figcaption></figure>
+      <figure><div class="ph" style="aspect-ratio:1500/840"><img src="images/pg-05.jpg" alt="Causal loop diagram linking his traits" data-zoom data-cap="Causal loop diagram"></div><figcaption>Causal loop diagram</figcaption></figure>
+    </div>
+    <p class="muted mt" style="max-width:64ch">Mapping his traits surfaced twelve tensions, each a pair of traits pulling against each other. Tap a card to read it. We took <strong style="color:var(--ink)">E</strong> forward.</p>
+    <div class="ins-grid" id="insGrid"></div>
+    <div class="ins-detail panel p-soft" id="insDetail" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- 04 DESIGN INTENT -->
+<section class="chapter" id="intent">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">04</div><div><h2><small>Direction</small>Design intent</h2><div class="rule"></div></div></div>
+    <div class="panel p-lime">
+      <p class="quote" style="max-width:30ch">Transform anxious, repetitive motion into a slow, grounding ritual, so he can channel restlessness into calm through familiar, sensory interaction.</p>
+    </div>
+
+    <h3 class="t mt2">Bodystorming: what his hands chose</h3>
+    <p class="muted" style="max-width:64ch">We gave him 20 materials and scored each out of 10 on five criteria. Sort by any criterion and tap a material for detail.</p>
+    <div class="g-asym">
+      <div class="panel p-card">
+        <div class="tabs" role="tablist" aria-label="Sort materials by" id="mTabs" style="margin-bottom:14px"></div>
+        <div class="mchart" id="mchart"></div>
+        <button class="btn mt" id="mMore" aria-expanded="false">Show all 20 materials</button>
+      </div>
+      <div class="panel p-teal mdetail" id="mdetail" aria-live="polite"></div>
+    </div>
+
+    <div class="rail mt" aria-label="Bodystorming photos">
+      <figure><div class="ph ratio-wide"><img src="images/pg-06.jpg" alt="Hands folding green paper" data-zoom data-cap="Folding paper"></div><figcaption>Folding paper</figcaption></figure>
+      <figure><div class="ph ratio-wide"><img src="images/pg-07.jpg" alt="Hands knotting blue wool" data-zoom data-cap="Wool"></div><figcaption>Wool</figcaption></figure>
+      <figure><div class="ph ratio-wide"><img src="images/pg-08.jpg" alt="Hands with thin wire" data-zoom data-cap="Thread and wire"></div><figcaption>Thread and wire</figcaption></figure>
+      <figure><div class="ph ratio-wide"><img src="images/pg-09.jpg" alt="Hands bending yellow wire" data-zoom data-cap="Metal wire"></div><figcaption>Metal wire</figcaption></figure>
+      <figure><div class="ph ratio-wide"><img src="images/pg-10.jpg" alt="Hands pressing bubble wrap" data-zoom data-cap="Bubble wrap"></div><figcaption>Bubble wrap</figcaption></figure>
+      <figure><div class="ph ratio-wide"><img src="images/pg-11.jpg" alt="Hands tearing cork" data-zoom data-cap="Cork sheet"></div><figcaption>Cork sheet</figcaption></figure>
+    </div>
+
+    <div class="panel p-teal mt">
+      <h3 class="t" style="color:var(--lime)">Guidelines from Subject B</h3>
+      <div class="guides mt">
+        <div class="guide"><b>Physical</b><span>Not another digital interaction.</span></div>
+        <div class="guide"><b>Portable</b><span>Carried everywhere.</span></div>
+        <div class="guide"><b>Tactile</b><span>Hands-on.</span></div>
+        <div class="guide"><b>Familiar</b><span>Comfort in the known.</span></div>
+        <div class="guide"><b>Slow to learn</b><span>Never overwhelming.</span></div>
+        <div class="guide"><b>Discreet</b><span>Draws no attention.</span></div>
+        <div class="guide"><b>Fulfilling</b><span>Ends in an outcome.</span></div>
+        <div class="guide"><b>Collectable</b><span>A sense of achievement.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PROTOTYPES -->
+<section class="chapter" id="prototypes">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">05</div><div><h2><small>From six ideas to four prototypes</small>Prototypes</h2><div class="rule"></div></div></div>
+    <div class="g-asym">
+      <div>
+        <p class="lead" style="margin:0 0 18px">Six initial concepts led to four prototypes. He used each freely while we watched, then rated it out of 10.</p>
+        <div class="rail" aria-label="Initial concept sketches">
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-12.jpg" alt="Sticky Origami sketch" data-zoom data-cap="Sticky Origami"></div><figcaption>Sticky Origami</figcaption></figure>
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-13.jpg" alt="Wire Storm sketch" data-zoom data-cap="Wire Storm"></div><figcaption>Wire Storm</figcaption></figure>
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-14.jpg" alt="Bend and Snap sketch" data-zoom data-cap="Bend and Snap"></div><figcaption>Bend and Snap</figcaption></figure>
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-15.jpg" alt="Elastic Ring renders" data-zoom data-cap="Elastic Ring"></div><figcaption>Elastic Ring</figcaption></figure>
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-16.jpg" alt="Marble pendulum sketch" data-zoom data-cap="Mood Changer Marble Pendulum"></div><figcaption>Marble Pendulum</figcaption></figure>
+          <figure><div class="ph ratio-wide contain"><img src="images/pg-17.jpg" alt="Saturn Ringer sketch" data-zoom data-cap="Saturn Ringer"></div><figcaption>Saturn Ringer</figcaption></figure>
+        </div>
+      </div>
+      <div class="panel p-teal"><h4>His ratings</h4><div class="mini-rank" id="protoRank"></div></div>
+    </div>
+
+    <div class="tabs mt2" role="tablist" aria-label="Prototypes" id="pTabs">
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pa" tabindex="-1">A · Wirestorm</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pb" tabindex="-1">B · Spiral-O-Graph</button>
+      <button class="tab" role="tab" aria-selected="true" aria-controls="pc">C · Pocketgami</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="pd" tabindex="-1">D · Fold Forever</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="pa" hidden>
+      <div class="proto">
+        <div class="imgs"><div class="ph"><img src="images/pg-18.jpg" alt="Wirestorm prototype" data-zoom data-cap="Wirestorm"></div><div class="ph"><img src="images/pg-19.jpg" alt="Wirestorm in testing" data-zoom data-cap="Wirestorm in testing"></div></div>
+        <div class="panel p-card">
+          <span class="status out">Abandoned</span>
+          <h3 class="t mt">Wirestorm</h3>
+          <p class="muted">Thread and shape wire through holes in a desk cylinder, and keep the shapes inside.</p>
+          <p class="quote" style="font-size:20px">“Fun and keeps me occupied. The size could be smaller.”</p>
+          <div class="rating"><span class="big">7<small>/10</small></span><div class="meter"><i style="width:70%"></i></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="pb" hidden>
+      <div class="proto">
+        <div class="imgs"><div class="ph"><img src="images/pg-20.jpg" alt="Steel bead figure-eight" data-zoom data-cap="Spiral-O-Graph"></div><div class="ph"><img src="images/pg-21.jpg" alt="Wooden bead figure-eight between fingers" data-zoom data-cap="Spiral-O-Graph, mid fidelity"></div></div>
+        <div class="panel p-card">
+          <span class="status next">Mid fidelity</span>
+          <h3 class="t mt">Spiral-O-Graph</h3>
+          <p class="muted">A figure-eight of beads on stretchable string, rolled and stretched between two fingers.</p>
+          <p class="quote" style="font-size:20px">“Helps me focus on others while fidgeting.”</p>
+          <div class="rating"><span class="big">6.5<small>/10</small></span><div class="meter"><i style="width:65%"></i></div></div>
+          <p class="small muted" style="margin:0">Too flashy and slightly bulky; it drew attention.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="pc">
+      <div class="proto">
+        <div class="imgs"><div class="ph"><img src="images/pg-22.jpg" alt="Low fidelity Pocketgami box" data-zoom data-cap="Pocketgami, low fidelity"></div><div class="ph"><img src="images/pg-23.jpg" alt="Subject folding a sheet" data-zoom data-cap="Pocketgami in testing"></div></div>
+        <div class="panel p-card">
+          <span class="status win">Selected</span>
+          <h3 class="t mt">Pocketgami</h3>
+          <p class="muted">Tearable origami sheets with printed crease patterns, plus a compartment for finished folds.</p>
+          <p class="quote" style="font-size:20px">“At first I felt tense, but as I continued, I could channel my restlessness and focus.”</p>
+          <div class="rating"><span class="big">8<small>/10</small></span><div class="meter"><i style="width:80%"></i></div></div>
+          <p class="small muted" style="margin:0">Suggestion: a slimmer sleeve and flatter tessellations.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="pd" hidden>
+      <div class="proto">
+        <div class="imgs"><div class="ph"><img src="images/pg-24.jpg" alt="Triangular crease strip" data-zoom data-cap="Fold Forever, low fidelity"></div><div class="ph"><img src="images/pg-25.jpg" alt="Mirror-panelled tessellation" data-zoom data-cap="Fold Forever, mid fidelity"></div></div>
+        <div class="panel p-card">
+          <span class="status next">Mid fidelity</span>
+          <h3 class="t mt">Fold Forever</h3>
+          <p class="muted">A durable triangular tessellation that folds endlessly, with soft hinges and hard panels.</p>
+          <p class="quote" style="font-size:20px">“I don’t have to focus on fidgeting. It feels like origami.”</p>
+          <div class="rating"><span class="big">8.8<small>/10</small></span><div class="meter"><i style="width:88%"></i></div></div>
+          <p class="small muted" style="margin:0">Suggestion: elastic joints for more play.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 OUTCOME -->
+<section class="chapter" id="outcome">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">06</div><div><h2><small>Final design</small>Outcome</h2><div class="rule"></div></div></div>
+    <div class="g-asym">
+      <figure><div class="ph" style="aspect-ratio:3/2"><img src="images/pg-26.jpg" alt="Hands holding the open Pocketgami holder" data-zoom data-cap="Pocketgami in hand"></div></figure>
+      <div class="stack">
+        <div class="panel p-lime">
+          <h4>Pocketgami</h4>
+          <p style="margin:0">A notepad of tearable origami sheets. Blank on the front; a tessellation crease pattern and a calming line on the back. The holder keeps finished folds, so a nervous moment leaves behind something he made.</p>
+        </div>
+        <div class="panel p-card">
+          <h4>Why it fits him</h4>
+          <div class="chips mt"><span class="c">Paper, his top material</span><span class="c">Folding, his top motion</span><span class="c">Pocket-sized</span><span class="c">Looks like a notepad</span><span class="c">Folds are collectable</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="t mt2">The ritual</h3>
+    <div class="ritual">
+      <div class="steps" role="tablist" aria-label="Ritual steps" id="steps">
+        <button class="step" role="tab" aria-selected="true"><span class="n">1</span><div><b>Reach and recall</b><span>Restlessness arrives</span></div></button>
+        <button class="step" role="tab" aria-selected="false" tabindex="-1"><span class="n">2</span><div><b>Fold and focus</b><span>Follow the creases</span></div></button>
+        <button class="step" role="tab" aria-selected="false" tabindex="-1"><span class="n">3</span><div><b>Reflect and release</b><span>Turn the sheet over</span></div></button>
+        <button class="step" role="tab" aria-selected="false" tabindex="-1"><span class="n">4</span><div><b>Store and grow</b><span>Keep what you made</span></div></button>
+      </div>
+      <div class="stage" id="stage" role="tabpanel" aria-live="polite"></div>
+    </div>
+
+    <div class="g2 mt">
+      <div class="sheet-block">
+        <div class="sheet" id="sheet" aria-label="Interactive crease sheet. Tap or drag across triangles to fold them." role="img"></div>
+        <div class="sheet-copy">
+          <h3>Try a few folds</h3>
+          <p>Drag or tap across the sheet. This slow, repeatable motion is what the whole project is built on.</p>
+          <div class="sheet-stat">
+            <div class="meter" aria-hidden="true"><i id="sheetMeter"></i></div>
+            <span class="small muted" id="sheetCount">0 of 64</span>
+            <button class="btn" id="sheetReset">Unfold</button>
+          </div>
+          <p class="calm-note mt" id="calmNote" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="panel p-teal">
+        <h3 class="t" style="color:var(--lime)">Validation</h3>
+        <p class="muted" style="margin:0">We placed him among unfamiliar people, a setting that made him visibly nervous, and handed him Pocketgami. As he folded, his attention moved from the room to his hands, and the anxiety turned into concentration and a sense of accomplishment. Because it looks like a notepad, he used it without drawing attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 REFLECTION -->
+<section class="chapter" id="reflection">
+  <div class="wrap">
+    <div class="sec-head"><div class="num">07</div><div><h2><small>Conclusion</small>Reflection</h2><div class="rule"></div></div></div>
+    <div class="g-asym">
+      <div>
+        <p class="quote" style="color:var(--teal)">He didn’t need to be changed. He needed to be understood.</p>
+        <p class="lead mt">His fidgeting wasn’t a distraction but his own way of finding control. Designing for behaviour change means guiding, not forcing.</p>
+      </div>
+      <div class="stack">
+        <div class="panel p-lime"><h4>What we’d do differently</h4><p style="margin:0">A smaller, sturdier holder, better paper, and sustainable materials.</p></div>
+        <details class="acc"><summary>Where it could go next<span class="pm" aria-hidden="true">+</span></summary><div class="ab">Sheets that grow in complexity so the ritual also teaches. Textured papers. Interchangeable pattern themes and palettes. Trading finished folds as a gentle, low-pressure way to connect with others.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="panel p-teal" style="border-radius:var(--r-xl)">
+      <div class="g-asym" style="align-items:end">
+        <h3 class="t" style="color:var(--lime);font-size:clamp(30px,4vw,44px);margin:0">The team</h3>
+        <div class="small muted">Mentors: Amresh Panigrahi, Austin Davis, Pratheek P Ashok, Neha Laishram, Manoj Kuldeep</div>
+      </div>
+      <div class="team mt">
+        <div class="person"><b>Aastha Virmani</b><span>Apparel Design</span></div>
+        <div class="person"><b>Barkha Aribam</b><span>Lifestyle Accessory Design</span></div>
+        <div class="person"><b>Allen Antony</b><span>New Media Design</span></div>
+        <div class="person"><b>Shivam Chaudhry</b><span>Photography Design</span></div>
+        <div class="person"><b>Anudev Praveen</b><span>Transport and Automobile Design</span></div>
+        <div class="person"><b>Anamika</b><span>Strategic Design Management</span></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:26px">
+        <span class="small muted">National Institute of Design, Gandhinagar, 2025</span>
+        <a href="#top" class="btn" style="text-decoration:none;background:transparent;color:var(--on-teal);border-color:color-mix(in srgb,var(--on-teal) 30%,transparent)">Back to top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="pf-end">
+  <div class="wrap">
+    <p>Thanks for folding along.</p>
+    <div class="pf-foot"><a href="../index.html#work">← Back to all projects</a><a href="../about.html">About Anamika</a><a href="mailto:anamika_a@nid.edu">anamika_a@nid.edu</a></div>
+  </div>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <div class="lb-acts" style="position:fixed;gap:8px"><a class="btn lime" id="lbDl" download="Pocketgami-poster.jpg" style="text-decoration:none">Download poster</a></div>
+  <button id="lbClose" aria-label="Close" style="position:fixed">×</button>
+  <figure><img id="lbImg" alt=""><p id="lbCap"></p></figure>
+</div>
+
+
+<script type="text/plain" id="posterData">images/poster.jpg</script>
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme */
+  const root=document.documentElement;
+  try{const t=localStorage.getItem('pg-theme'); if(t) root.dataset.theme=t;}catch(e){}
+  $('#themeBtn').addEventListener('click',()=>{
+    const dark=root.dataset.theme? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+    try{localStorage.setItem('pg-theme',root.dataset.theme)}catch(e){}
+  });
+
+  /* progress + active nav */
+  const prog=$('#progress'), links=$$('.nav a'), secs=links.map(a=>$(a.getAttribute('href')));
+  function onScroll(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.width=(h>0?scrollY/h*100:0)+'%';
+    let cur=-1; secs.forEach((s,i)=>{ if(s && s.getBoundingClientRect().top<innerHeight*.35) cur=i; });
+    links.forEach((a,i)=>a.classList.toggle('on',i===cur));
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* fold sheet */
+  const sheet=$('#sheet'), N=4, S=100/N, colors=['var(--lilac)','var(--sky)','var(--orange)','var(--lime)'];
+  let svg='<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">', idx=0;
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+    const x=c*S,y=r*S,cx=x+S/2,cy=y+S/2;
+    const tris=[[x,y,x+S,y],[x+S,y,x+S,y+S],[x+S,y+S,x,y+S],[x,y+S,x,y]];
+    tris.forEach((t,k)=>{svg+=`<polygon data-i="${idx++}" style="--c:${colors[(r+c+k)%4]}" points="${t[0]},${t[1]} ${t[2]},${t[3]} ${cx},${cy}"/>`;});
+  }
+  for(let i=1;i<N;i++){svg+=`<line class="crease valley" x1="${i*S}" y1="0" x2="${i*S}" y2="100"/><line class="crease valley" x1="0" y1="${i*S}" x2="100" y2="${i*S}"/>`;}
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){const x=c*S,y=r*S;svg+=`<line class="crease" x1="${x}" y1="${y}" x2="${x+S}" y2="${y+S}"/><line class="crease" x1="${x+S}" y1="${y}" x2="${x}" y2="${y+S}"/>`;}
+  svg+='</svg>'; sheet.innerHTML=svg;
+  const polys=$$('polygon',sheet), total=polys.length;
+  const notes=[[8,'Notice your hands slowing down.'],[24,'Calm begins within you.'],[40,'Slow down, it’s okay.'],[56,'Ease unfolds in stillness.'],[64,'Finished. That’s the ritual: something made out of a restless minute.']];
+  let down=false;
+  function fold(p){
+    if(!p||p.tagName!=='polygon'||p.classList.contains('f'))return;
+    p.classList.add('f'); if(!reduce){p.classList.remove('flip');void p.getBBox();p.classList.add('flip');}
+    update();
+  }
+  function update(){
+    const n=$$('polygon.f',sheet).length;
+    $('#sheetMeter').style.width=(n/total*100)+'%';
+    $('#sheetCount').textContent=n+' of '+total;
+    let msg=''; notes.forEach(([t,m])=>{if(n>=t)msg=m}); $('#calmNote').textContent=msg;
+  }
+  sheet.addEventListener('pointerdown',e=>{down=true;fold(e.target);});
+  sheet.addEventListener('pointermove',e=>{ if(e.pointerType==='mouse'&&!down){fold(e.target);return;} if(!down)return; fold(document.elementFromPoint(e.clientX,e.clientY)); });
+  addEventListener('pointerup',()=>down=false);
+  $('#sheetReset').addEventListener('click',()=>{polys.forEach(p=>p.classList.remove('f','flip'));update();});
+
+  /* generic tabs */
+  function tabs(list,onSelect){
+    const ts=$$('[role=tab]',list);
+    ts.forEach((t,i)=>{
+      t.addEventListener('click',()=>sel(i));
+      t.addEventListener('keydown',e=>{
+        const k=e.key; let j=null;
+        if(k==='ArrowRight'||k==='ArrowDown')j=(i+1)%ts.length;
+        if(k==='ArrowLeft'||k==='ArrowUp')j=(i-1+ts.length)%ts.length;
+        if(j!==null){e.preventDefault();sel(j);ts[j].focus();}
+      });
+    });
+    function sel(i){
+      ts.forEach((t,k)=>{t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;
+        const pid=t.getAttribute('aria-controls'); if(pid){const p=document.getElementById(pid); if(p)p.hidden=k!==i;}});
+      onSelect&&onSelect(i,ts[i]);
+    }
+    return sel;
+  }
+  tabs($('[aria-label="Interview rounds"]'));
+  tabs($('#pTabs'));
+
+  /* empathy map */
+  $$('#emap .eq').forEach(b=>b.addEventListener('click',()=>b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true')));
+
+  /* insights */
+  const ins=[
+    ['A','Having meaningful conversations','Emotional unavailability towards family','He enjoys meaningful, transparent conversations, yet is emotionally unavailable to his family, which contradicts his wish to connect deeply.','A tool that allows low-stakes, vulnerable conversations with close family, without confrontation.'],
+    ['B','Contentment in sensory experiences','Fear of judgment and need for stability','He feels deeply connected to nature but avoids forming favourites or attachments, even in things he enjoys.','Small, consistent rituals that let him build a gentle, personal bond with nature and a quiet sense of belonging.'],
+    ['C','Loyal and determined','Lost interest in learning new things','He stays committed, but the curiosity that once drove him to explore has faded, leaving determination without direction.','Small, achievable challenges aligned with his values, reconnecting determination with discovery.'],
+    ['D','Feels a compulsion to help everyone','Hesitant to express first','He supports others but struggles to voice his own feelings or ask for help, leading to quiet exhaustion.','Gentle, reciprocal rituals where sharing feels natural, mutual and safe rather than performative.'],
+    ['E','Anxious and fidgety','Comfort in familiarity and slowness','Anxiety drives restlessness and fidgeting, but comfort comes from familiar, slow, predictable experiences.','Transform anxious, repetitive motion into a slow, grounding ritual through a tactile, familiar object, letting him channel restlessness into calm.'],
+    ['F','Looks at his phone to avoid eye contact','Insecurities','Socially conscious people have no graceful way to step out of a group conversation.','A mindful, non-digital way to take small emotional breaks and stay present without seeming withdrawn.'],
+    ['G','Happiest in the present','Digital emotional expression feels learned','He values slowness and meaningful connection but struggles with expressing emotion through digital means.','A subtle emotional anchor that needs no performance or words, and feels private and intimate.'],
+    ['H','Likes familiarity','Doesn’t have favourites','He finds comfort in familiar spaces but avoids deep attachment, which creates emotional monotony.','Familiar, low-pressure experiences that let him rediscover warmth and preference while feeling in control.'],
+    ['I','Inner conflict and emotional restraint','Comfort in familiarity and slowness','There are no safe outlets for his emotions.','A low-stakes release medium, like a private reflection card or an object that changes with touch, to externalise feelings gently.'],
+    ['J','Contentment in sensory experiences','Inner conflict and emotional restraint','He has no rituals of connection.','A small daily ritual or tangible token, such as a sound cue or a keepsake he personalises over time.'],
+    ['K','Inner conflict and emotional restraint','Fear of judgment and need for stability','Emotional fatigue from over-helping.','A compassionate reflection aid that helps him track emotional energy and set boundaries.'],
+    ['L','Emotional restraint','Contentment in sensory experiences','His emotional vocabulary is limited.','Alternative modes like texture, pattern, gesture and colour that carry emotional nuance without words.']
+  ];
+  const grid=$('#insGrid');
+  grid.innerHTML=ins.map((d,i)=>`<button class="ins${d[0]==='E'?' chosen':''}" aria-pressed="false" data-i="${i}"><span class="l">${d[0]}</span><span class="pair">${d[1]}<em>pulls against</em>${d[2]}</span></button>`).join('');
+  function showIns(i){
+    const d=ins[i];
+    $$('.ins',grid).forEach((b,k)=>b.setAttribute('aria-pressed',k===i));
+    $('#insDetail').innerHTML=`<div class="g2"><div><h4>${d[0]}. The gap${d[0]==='E'?' <span class="badge" style="margin:0 0 0 8px">Chosen direction</span>':''}</h4><p class="muted" style="margin:0">${d[3]}</p></div><div><h4>The opportunity</h4><p class="muted" style="margin:0">${d[4]}</p></div></div>`;
+  }
+  $$('.ins',grid).forEach(b=>b.addEventListener('click',()=>showIns(+b.dataset.i)));
+  showIns(4);
+
+  /* materials */
+  const M=[
+    ['Paper',10,10,10,9,10,'Joy, calmness, content','Creasing, folding, aligning','Visual, tactile'],
+    ['Wool',10,9,10,10,9,'Tension, excitement','Knotting, pulling','Tactile'],
+    ['Thread',8,9,10,10,9,'Tension, excitement','Knotting, pulling','Tactile'],
+    ['Marbles',9,10,9,1,10,'Joy, curiosity','Rolling, throwing','Tactile, auditory'],
+    ['Rubber band',10,8,10,1,8,'Interest, tension','Twisting, knotting, stretching','Tactile'],
+    ['Metal wire',6,9,6,9,7,'Stress','Bending, pulling, pushing','Visual, tactile'],
+    ['Pebbles',7,10,6,1,9,'Joy, curiosity','Rolling, throwing','Tactile, auditory'],
+    ['Sunboard',3,8,3,8,7,'Forceful, agitation','Pressing, breaking','Tactile'],
+    ['Small instrument',4,6,1,7,9,'Soothing, joy, curiosity','Plucking','Visual, tactile, auditory'],
+    ['Wooden blocks',3,7,7,6,4,'Sadness, agitation','Tapping, sliding','Visual, tactile, auditory, olfactory'],
+    ['Electrical wire',8,8,8,1,2,'Boredom','Bending, knotting','Tactile'],
+    ['Bubble wrap',4,10,3,1,6,'Frustration, satisfaction','Pressing','Tactile, auditory'],
+    ['Nylon wire',6,7,8,1,2,'Boredom','Bending, knotting','Tactile'],
+    ['Wooden sticks',4,10,3,1,5,'Anger, irritation','Bending, breaking, twisting','Tactile'],
+    ['Thermocol',2,8,3,6,2,'Agitation, fear','Pushing, scratching','Tactile'],
+    ['Foam sheet',4,7,4,1,4,'Boredom','Bending, creasing','Tactile'],
+    ['Ball pins',2,3,7,1,3,'Hurtful, boredom','Poking, pulling','Tactile'],
+    ['Bamboo sticks',1,6,1,1,6,'Forceful, agitation','Bending, breaking, rotating','Tactile, olfactory, auditory'],
+    ['Cork sheet',1,6,2,1,4,'Frustration, anxiety','Pulling','Tactile'],
+    ['Wire mesh',4,5,2,1,1,'Boredom','Bending','Tactile']
+  ].map(r=>({n:r[0],s:r.slice(1,6),tot:r.slice(1,6).reduce((a,b)=>a+b,0),emo:r[6],mov:r[7],sense:r[8]}));
+  const crit=['Total','Portability','Familiarity','Discreet','Fulfilment','Satisfaction'];
+  const top5=new Set(['Paper','Wool','Thread','Rubber band','Marbles']);
+  $('#mTabs').innerHTML=crit.map((c,i)=>`<button class="tab" role="tab" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${c}</button>`).join('');
+  const mc=$('#mchart'); let curM=0, curCrit=0, showAll=false;
+  $('#mMore').addEventListener('click',e=>{showAll=!showAll;e.currentTarget.textContent=showAll?'Show top 8':'Show all 20 materials';e.currentTarget.setAttribute('aria-expanded',showAll);drawM(curCrit);});
+  function drawM(ci){
+    curCrit=ci;
+    const val=m=>ci===0?m.tot:m.s[ci-1], max=ci===0?50:10;
+    const sorted=[...M].sort((a,b)=>val(b)-val(a)).slice(0,showAll?20:8);
+    mc.innerHTML=sorted.map(m=>`<button class="mrow${top5.has(m.n)?' top':''}${M.indexOf(m)===curM?' on':''}" data-i="${M.indexOf(m)}"><span class="nm">${m.n}</span><span class="tr"><i style="width:0"></i></span><span class="v">${val(m)}<span class="muted" style="font-weight:500;font-size:12px">/${max}</span></span></button>`).join('');
+    requestAnimationFrame(()=>$$('.mrow',mc).forEach(b=>{const m=M[+b.dataset.i];b.querySelector('i').style.width=(val(m)/max*100)+'%';}));
+    $$('.mrow',mc).forEach(b=>{b.addEventListener('click',()=>{curM=+b.dataset.i;$$('.mrow',mc).forEach(x=>x.classList.toggle('on',x===b));detailM();});b.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches){curM=+b.dataset.i;$$('.mrow',mc).forEach(x=>x.classList.toggle('on',x===b));detailM();}});});
+  }
+  function detailM(){
+    const m=M[curM]; const rank=[...M].sort((a,b)=>b.tot-a.tot).indexOf(m)+1;
+    $('#mdetail').innerHTML=`<p class="small muted" style="margin:0 0 6px">Rank ${rank} of 20</p><h3 class="t" style="color:var(--lime);margin-bottom:6px">${m.n}</h3><div class="stat-row"><div class="stat"><b>${m.tot}/50</b><span>total score</span></div></div>
+      <div class="mini-rank">${crit.slice(1).map((c,k)=>`<div><span>${c}</span><span class="tr"><i style="width:${m.s[k]*10}%"></i></span><b style="text-align:right">${m.s[k]}</b></div>`).join('')}</div>
+      <dl class="kv mt"><dt>Felt</dt><dd>${m.emo}</dd><dt>Motion</dt><dd>${m.mov}</dd><dt>Senses</dt><dd>${m.sense}</dd></dl>`;
+  }
+  tabs($('#mTabs'),i=>drawM(i)); drawM(0); detailM();
+  /* prototype ranking */
+  $('#protoRank').innerHTML=[['Fold Forever',8.8],['Pocketgami',8],['Wirestorm',7],['Spiral-O-Graph',6.5]].map(([n,v])=>`<div><span>${n}</span><span class="tr"><i style="width:${v*10}%"></i></span><b style="text-align:right">${v}</b></div>`).join('');
+
+  /* ritual */
+  const quotes=['You are safe here.','Calm begins within you.','Every breath restores peace.','Slow down, it’s okay.','Ease unfolds in stillness.'];
+  let qi=0;
+  const ink='currentColor';
+  const art=[
+    `<svg viewBox="0 0 240 240" aria-hidden="true"><rect x="30" y="70" width="180" height="130" rx="22" fill="var(--teal)"/><rect x="46" y="40" width="148" height="110" rx="14" fill="var(--sky)" transform="rotate(-6 120 95)"/><rect x="58" y="52" width="148" height="110" rx="14" fill="var(--lilac)" transform="rotate(4 130 105)"/><rect x="30" y="120" width="180" height="80" rx="22" fill="var(--teal-deep)"/></svg>`,
+    `<svg viewBox="0 0 240 240" aria-hidden="true"><rect x="30" y="30" width="180" height="180" rx="18" fill="#fff" stroke="var(--line)"/><g stroke="#1D3836" stroke-opacity=".5" stroke-width="1.5"><path d="M30 30L210 210M210 30L30 210" /><path d="M120 30V210M30 120H210" stroke-dasharray="6 6"/><path d="M75 30L30 75M165 30L210 75M30 165L75 210M210 165L165 210"/></g><path d="M120 120L210 30L210 120Z" fill="var(--orange)" opacity=".85"><animateTransform attributeName="transform" type="rotate" values="0 120 120;-12 120 120;0 120 120" dur="3s" repeatCount="indefinite"/></path></svg>`,
+    null,
+    `<svg viewBox="0 0 240 240" aria-hidden="true"><path d="M30 110h180v80a20 20 0 0 1-20 20H50a20 20 0 0 1-20-20z" fill="var(--teal)"/><path d="M80 110l25-45 25 45 25-45 25 45z" fill="var(--orange)"/><path d="M60 110l30-30 30 30z" fill="var(--lilac)"/><path d="M140 110l22-38 28 38z" fill="var(--sky)"/><rect x="30" y="104" width="180" height="16" rx="8" fill="var(--teal-deep)"/></svg>`
+  ];
+  const copy=[
+    ['Reach and recall','When restlessness arrives, he pulls out a Pocketgami sheet. Square, portable, printed with a tessellation and a calming line on the back. It is always ready, anywhere.'],
+    ['Fold and focus','Following the printed pattern, he folds along the lines. The slow, repetitive motion channels anxious energy into a mindful, tactile activity, and his attention moves from the room to his hands.'],
+    ['Reflect and release','As the tessellation takes form, he pauses to read the line on the back, linking the act of folding with calm and release. Tap the sheet to turn it over.'],
+    ['Store and grow','The finished fold goes back into the holder. Over time it becomes a personal collection of growth, control and creativity: anxious moments turned into something made.']
+  ];
+  function stage(i){
+    const a=art[i]||`<button class="flipcard" id="flip" aria-label="Turn the sheet over"><span class="inner"><span class="face front"><span>Tap to turn over</span></span><span class="face back" id="qtext">${quotes[qi]}</span></span></button>`;
+    $('#stage').innerHTML=`<div>${a}</div><div><p class="small muted" style="margin:0 0 6px">Step ${i+1} of 4</p><h3>${copy[i][0]}</h3><p class="muted">${copy[i][1]}</p>${i===2?'<button class="btn" id="nextQ">Show another line</button>':''}<div style="display:flex;gap:8px;margin-top:14px">${i<3?`<button class="btn solid" id="nextStep">Next: ${copy[i+1][0].toLowerCase()}</button>`:'<button class="btn solid" id="nextStep">Start again</button>'}</div></div>`;
+    const f=$('#flip'); if(f)f.addEventListener('click',()=>f.classList.toggle('turned'));
+    const nq=$('#nextQ'); if(nq)nq.addEventListener('click',()=>{qi=(qi+1)%quotes.length;$('#qtext').textContent=quotes[qi];$('#flip').classList.add('turned');});
+    $('#nextStep').addEventListener('click',()=>selStep((i+1)%4));
+  }
+  const selStep=tabs($('#steps'),i=>stage(i)); stage(0);
+
+  /* lightbox + poster */
+  const lb=$('#lb'), lbImg=$('#lbImg'); let last=null;
+  function openLb(src,alt,cap,poster){lbImg.src=src;lbImg.alt=alt;$('#lbCap').textContent=cap;lb.classList.toggle('poster',!!poster);if(poster)$('#lbDl').href=src;lb.classList.add('open');lb.scrollTop=0;document.body.style.overflow='hidden';$('#lbClose').focus();}
+  document.addEventListener('click',e=>{
+    const pb=e.target.closest('[data-poster]');
+    if(pb){last=pb;openLb($('#posterData').textContent.trim(),'Pocketgami A2 project poster','Project poster (A2)',true);return;}
+    const im=e.target.closest('img[data-zoom]'); if(!im)return;
+    last=im; openLb(im.src,im.alt,im.dataset.cap||im.alt,false);
+  });
+  $$('img[data-zoom]').forEach(im=>{im.tabIndex=0;im.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();im.click();}})});
+  function close(){lb.classList.remove('open','poster');document.body.style.overflow='';last&&last.focus();}
+  $('#lbClose').addEventListener('click',close);
+  lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')close();});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+
+  /* glance links: highlight the destination */
+  $$('.gl,.nav a').forEach(a=>a.addEventListener('click',()=>{const s=$(a.getAttribute('href'));if(!s)return;s.classList.remove('flash');void s.offsetWidth;s.classList.add('flash');setTimeout(()=>s.classList.remove('flash'),1600);}));
+})();
+</script>
+</body>
+</html>
