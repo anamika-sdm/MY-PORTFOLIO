@@ -1033,5 +1033,10 @@ footer{padding-top:clamp(40px,6vw,72px)}
   $$('.gl,.nav a').forEach(a=>a.addEventListener('click',()=>{const s=$(a.getAttribute('href'));if(!s)return;s.classList.remove('flash');void s.offsetWidth;s.classList.add('flash');setTimeout(()=>s.classList.remove('flash'),1600);}));
 })();
 </script>
+<script>
+/* arriving from a portfolio link with #section: land on it once images have loaded and the layout has settled */
+(()=>{const t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));if(!t||t.tagName!=='SECTION')return;const h=document.documentElement;h.style.scrollBehavior='auto';
+addEventListener('load',()=>setTimeout(()=>{t.scrollIntoView({block:'start'});setTimeout(()=>{h.style.scrollBehavior=''},50)},60))})();
+</script>
 </body>
 </html>
