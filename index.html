@@ -64,13 +64,13 @@
     .visual-two{background:var(--gold);color:var(--green)}
     .visual-three{background:var(--green);color:var(--cream)}
     .visual-four{background:var(--rust);color:var(--cream)}
-    .visual-five{background:var(--gold);color:var(--green)}
+    .visual-five{background:#b7c4a0;color:var(--green)}
     .orb{width:145px;height:145px;border-radius:50%;background:var(--gold);box-shadow:35px 20px 0 var(--cream),-25px 40px 0 var(--rust);transition:transform .5s}
     .project:hover .orb{transform:rotate(35deg) scale(1.08)}
     .visual-two .orb{background:var(--rust);box-shadow:35px 20px 0 var(--cream),-25px 40px 0 var(--green)}
     .visual-three .orb{background:var(--terra);box-shadow:35px 20px 0 var(--gold),-25px 40px 0 var(--cream)}
     .visual-four .orb{background:var(--green);box-shadow:35px 20px 0 var(--gold),-25px 40px 0 var(--terra)}
-    .visual-five .orb{background:var(--green);box-shadow:35px 20px 0 var(--cream),-25px 40px 0 var(--terra)}
+    .visual-five .orb{background:var(--terra);box-shadow:35px 20px 0 var(--cream),-25px 40px 0 var(--green)}
     .project-number{position:absolute;bottom:22px;left:0;right:0;text-align:center;font:500 .68rem var(--s);letter-spacing:.2em}
     .project-meta{display:flex;justify-content:space-between;gap:15px;margin-top:18px;align-items:start}
     .project-meta h3{font-size:1.4rem}
@@ -136,6 +136,19 @@
     .env-seal::before{content:"";position:absolute;inset:-7%;z-index:-1;background:inherit;border-radius:47% 53% 51% 49%/53% 47% 53% 47%;filter:brightness(.92)}
     .env-seal .sunface{position:absolute;inset:0;border-radius:50%;background:var(--gold)}
     .env-seal span{position:absolute;inset:16%;border-radius:50%;border:1px solid rgba(110,60,10,.35);display:grid;place-items:center;font:700 1.35rem Fraunces,Georgia,serif;color:rgba(110,60,10,.6);text-shadow:0 1px 0 rgba(255,225,160,.55);opacity:0}
+    /* CV viewer */
+    .cv-view{position:fixed;inset:0;z-index:300;background:rgba(30,74,60,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;padding:3vh 16px;overflow-y:auto}
+    .cv-view[hidden]{display:none}
+    .cv-sheet{width:min(860px,100%);background:var(--cream);border-radius:28px 28px 16px 16px;overflow:hidden;box-shadow:0 30px 70px rgba(20,40,32,.35);animation:appear .35s both}
+    .cv-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 16px 24px;background:var(--green);color:var(--cream);position:sticky;top:0}
+    .cv-top b{font:700 1.25rem var(--d)}
+    .cv-top small{display:block;font:500 .64rem var(--s);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+    .cv-acts{display:flex;flex-wrap:wrap;gap:8px}
+    .cv-acts a,.cv-acts button{font:500 .66rem var(--s);letter-spacing:.16em;text-transform:uppercase;padding:10px 14px;border:2px solid var(--cream);background:none;color:var(--cream);border-radius:99px;cursor:pointer}
+    .cv-acts a:hover,.cv-acts button:hover{background:var(--gold);border-color:var(--gold);color:var(--green)}
+    .cv-page{padding:clamp(10px,2.5vw,24px)}
+    .cv-page img{display:block;width:100%;height:auto;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(30,74,60,.15)}
+    @media (max-width:650px){.cv-view{padding:12px 8px}.cv-top{padding:14px 12px 14px 18px}.cv-top b{font-size:1.1rem}.cv-acts{gap:6px}.cv-acts a,.cv-acts button{padding:8px 10px;letter-spacing:.08em;font-size:.58rem}}
   </style>
 </head>
 <body>
@@ -146,7 +159,7 @@
     <div class="navlinks">
       <a href="#work">Work</a>
       <a href="about.html" data-envelope>About</a>
-      <a href="Anamika_CV.pdf" target="_blank" rel="noopener">CV ↓</a>
+      <a href="Anamika_CV.pdf" target="_blank" rel="noopener" data-cv-view>CV</a>
       <a href="#contact">Contact ↗</a>
     </div>
   </nav>
@@ -297,7 +310,8 @@
       <div class="contact-links">
         <a class="email" href="mailto:anamika_a@nid.edu">anamika_a@nid.edu ↗</a>
         <a class="email" href="https://www.linkedin.com/in/anamika-sdm" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="email" href="Anamika_CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+        <a class="email" href="Anamika_CV.pdf" target="_blank" rel="noopener" data-cv-view>View CV ↗</a>
+        <a class="email" href="Anamika_CV.pdf" download="Anamika_CV.pdf">Download CV ↓</a>
       </div>
     </div>
   </section>
@@ -390,6 +404,35 @@
     const sun = document.querySelector('.sun');
     if (sun) sun.style.visibility = '';
   });
+})();
+</script>
+  <div class="cv-view" id="cvView" hidden role="dialog" aria-modal="true" aria-labelledby="cvViewTitle">
+    <div class="cv-sheet">
+      <div class="cv-top">
+        <div><b id="cvViewTitle">Curriculum vitae</b><small>Anamika · one page</small></div>
+        <div class="cv-acts">
+          <a href="Anamika_CV.pdf" download="Anamika_CV.pdf">Download PDF ↓</a>
+          <a href="Anamika_CV.pdf" target="_blank" rel="noopener">Open PDF ↗</a>
+          <button type="button" id="cvViewClose" aria-label="Close CV">Close ×</button>
+        </div>
+      </div>
+      <div class="cv-page"><img src="images/anamika-cv.png" width="1489" height="2105" alt="Anamika’s CV: professional summary, core skills, education at NID and NIFT, academic projects and experience" loading="lazy"></div>
+    </div>
+  </div>
+<script>
+(() => {
+  // View the CV in place; download stays a separate choice.
+  const box = document.getElementById('cvView'), closeBtn = document.getElementById('cvViewClose');
+  let last = null;
+  const open = a => { last = a; box.hidden = false; document.body.style.overflow = 'hidden'; box.scrollTop = 0; closeBtn.focus(); };
+  const close = () => { box.hidden = true; document.body.style.overflow = ''; last && last.focus(); };
+  document.querySelectorAll('[data-cv-view]').forEach(a => a.addEventListener('click', e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault(); open(a);
+  }));
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !box.hidden) close(); });
 })();
 </script>
 </body>
