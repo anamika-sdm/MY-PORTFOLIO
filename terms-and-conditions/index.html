@@ -621,7 +621,7 @@ if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-moti
   function openBook(e){if(e)e.preventDefault();lastFocus=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';closeBtn.focus();loadBook();}
   function closeBook(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
   function turn(direction){if(!pdfDoc||rendering)return;const step=isMobile()?1:2;const target=currentPage+direction*step;if(target<1||target>pdfDoc.numPages)return;currentPage=target;showSpread(direction>0?'turning-next':'turning-prev');}
-  openBtn.addEventListener('click',openBook);closeBtn.addEventListener('click',closeBook);prev.addEventListener('click',()=>turn(-1));next.addEventListener('click',()=>turn(1));
+  openBtn.addEventListener('click',openBook);if(location.hash==='#whitepaper-book')openBook();closeBtn.addEventListener('click',closeBook);prev.addEventListener('click',()=>turn(-1));next.addEventListener('click',()=>turn(1));
   modal.addEventListener('click',e=>{if(e.target===modal)closeBook();});
   document.addEventListener('keydown',e=>{if(!modal.classList.contains('open'))return;if(e.key==='Escape')closeBook();if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1);});
   let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(modal.classList.contains('open')&&pdfDoc)showSpread();},180);});
