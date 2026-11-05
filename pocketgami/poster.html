@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocketgami Poster — Anamika · Portfolio</title>
+<meta name="description" content="The A2 project poster for Pocketgami, a pocket origami ritual designed for one socially anxious student. Design for One, NID Gandhinagar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6F0;--surface:#FFFFFF;--ink:#1D3836;--ink-2:#4C5F5C;
+  --teal:#2D6361;--teal-deep:#21504E;--on-teal:#F3F5E4;
+  --lime:#E2E58C;--lime-soft:#EFF1C6;--on-lime:#1D3836;--band:#E6EBDB;--line:#DCE0D6;
+  --orange:#E8893C;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V32C180 0 360 6 560 28S960 56 1200 14V60z'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121F1E;--surface:#192A29;--ink:#E7ECE2;--ink-2:#A9B6B1;
+    --teal:#2A5856;--teal-deep:#224947;--on-teal:#EEF1DC;
+    --lime:#D3D77B;--lime-soft:#2B3A2C;--on-lime:#17302E;--band:#0D1817;--line:#2B3E3C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121F1E;--surface:#192A29;--ink:#E7ECE2;--ink-2:#A9B6B1;
+  --teal:#2A5856;--teal-deep:#224947;--on-teal:#EEF1DC;
+  --lime:#D3D77B;--lime-soft:#2B3A2C;--on-lime:#17302E;--band:#0D1817;--line:#2B3E3C;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1000px,100% - 32px);margin-inline:auto}
+h1{font-family:var(--display);font-weight:800;letter-spacing:-.04em;line-height:.95;margin:0}
+
+.pf-bar{position:relative;background:var(--teal);color:var(--on-teal);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:40px}
+.pf-bar a{text-decoration:none;opacity:.9}
+.pf-bar a:hover{opacity:1;text-decoration:underline}
+.pf-bar nav{display:flex;gap:20px}
+.pf-bar::after{content:"";position:absolute;left:0;right:0;top:calc(100% - 1px);height:18px;background:var(--teal);transform:scaleY(-1);pointer-events:none;-webkit-mask:var(--wave) bottom/100% 100% no-repeat;mask:var(--wave) bottom/100% 100% no-repeat}
+@media (max-width:640px){.pf-bar nav{display:none}}
+
+.intro{padding:64px 0 88px}
+.intro-grid{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+.eyebrow{display:inline-block;font-size:13.5px;padding:7px 13px;border-radius:999px;background:var(--lime);color:var(--on-lime);margin-bottom:18px}
+.intro h1{font-size:clamp(44px,8vw,88px)}
+.intro h1 span{color:var(--orange)}
+.intro p{color:var(--ink-2);max-width:52ch;margin:16px 0 0}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:15px;transition:background .2s,border-color .2s}
+.btn:hover{background:var(--lime-soft);border-color:var(--teal)}
+.btn.solid{background:var(--teal);color:var(--on-teal);border-color:var(--teal)}
+.btn.solid:hover{background:var(--teal-deep)}
+
+.wave-sec{position:relative;background:var(--sbg)}
+.wave-sec::before{content:"";position:absolute;left:0;right:0;top:-39px;height:40px;pointer-events:none;background:var(--sbg);-webkit-mask:var(--wave) bottom/100% 100% no-repeat;mask:var(--wave) bottom/100% 100% no-repeat}
+.show{--sbg:var(--band);padding:24px 0 110px}
+.frame{margin:0;background:var(--surface);border-radius:clamp(90px,16vw,200px) clamp(90px,16vw,200px) 32px 32px;padding:clamp(40px,7vw,90px) clamp(14px,3vw,32px) clamp(14px,3vw,32px);box-shadow:0 24px 60px -28px rgba(29,56,54,.35)}
+.frame img{display:block;width:100%;height:auto;border-radius:18px}
+.frame figcaption{text-align:center;font-size:14px;color:var(--ink-2);margin-top:14px}
+
+.end{--sbg:var(--teal-deep);color:var(--on-teal);padding:36px 0 44px}
+.end::before{transform:scaleX(-1)}
+.end .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 28px}
+.end p{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,26px)}
+.end .links{display:flex;flex-wrap:wrap;gap:10px}
+.end .links a{text-decoration:none;padding:10px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--on-teal) 35%,transparent);font-size:15px;transition:background .2s,color .2s}
+.end .links a:hover{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+@media (max-width:700px){.intro{padding:48px 0 72px}.intro-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pf-bar">
+  <div class="wrap">
+    <a href="../index.html#work">← Anamika · Portfolio</a>
+    <nav aria-label="Portfolio"><a href="../index.html">Home</a><a href="../index.html#work">Work</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav>
+  </div>
+</div>
+
+<header class="intro">
+  <div class="wrap intro-grid">
+    <div>
+      <span class="eyebrow">Project 05 · Poster (A2)</span>
+      <h1>Pocket<span>gami</span></h1>
+      <p>The project poster: one socially anxious student, three rounds of interviews, four prototypes and a pocket origami ritual that turns fidgeting into calm.</p>
+    </div>
+    <div class="acts">
+      <a class="btn solid" href="index.html">Read the case study</a>
+      <a class="btn" href="images/poster.jpg" download="Pocketgami-poster.jpg">Download poster</a>
+    </div>
+  </div>
+</header>
+
+<section class="wave-sec show">
+  <div class="wrap">
+    <figure class="frame">
+      <a href="images/poster.jpg" target="_blank" rel="noopener"><img src="images/poster.jpg" width="1697" height="2400" alt="Pocketgami A2 project poster: the brief, the user, research insights, prototypes and the final origami ritual"></a>
+      <figcaption>Tap the poster to open it full size.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<footer class="wave-sec end">
+  <div class="wrap">
+    <p>Thanks for folding along.</p>
+    <div class="links"><a href="../index.html#work">← Back to all projects</a><a href="index.html">Case study</a><a href="mailto:anamika_a@nid.edu">anamika_a@nid.edu</a></div>
+  </div>
+</footer>
+</body>
+</html>
